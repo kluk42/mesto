@@ -1,12 +1,4 @@
-const popupProfile = document.querySelector('.popup_type_profile');
-const nameInput = popupProfile.querySelector('.form__item_content_name');
-const jobInput = popupProfile.querySelector('.form__item_content_description');
-const name = document.querySelector('.profile__name');
-const job = document.querySelector('.profile__description');
-
-const editProfileButton = document.querySelector('.edit-button');
-const addButton = document.querySelector('.add-button')
-const formArray = Array.from(document.querySelectorAll('.form'));
+const userDataSelectors = {nameSelector: '.profile__name', infoSelector: '.profile__description'};
 
 const initialCards = [
     {
@@ -44,4 +36,4 @@ const validationConfig = {
     errorClass: 'form__input-error_active'
   };
 
-export {popupProfile, nameInput, jobInput, name, job, editProfileButton, addButton, formArray, initialCards, validationConfig}
+export {initialCards, validationConfig, userDataSelectors}

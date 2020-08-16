@@ -1,4 +1,4 @@
-import {popupProfile, editProfileButton, addButton, formArray, initialCards, validationConfig} from '../utils/constants.js';
+import {initialCards, validationConfig, userDataSelectors} from '../utils/constants.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Card} from '../components/Card.js';
 import Section from '../components/Section.js';
@@ -6,6 +6,11 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import '../page/index.css';
+
+const popupProfile = document.querySelector('.popup_type_profile');
+const editProfileButton = document.querySelector('.edit-button');
+const addButton = document.querySelector('.add-button')
+const formArray = Array.from(document.querySelectorAll('.form'));
 
 const handleCardClick = (data) => {
     const popupWithImage = new PopupWithImage('.popup_type_picture');
@@ -21,7 +26,6 @@ const renderer = (item) => {
 const defaultCards = new Section({items: initialCards, renderer: renderer}, '.gallery')
 defaultCards.renderItems();
 
-const userDataSelectors = {nameSelector: '.profile__name', infoSelector: '.profile__description'}
 const userInfo = new UserInfo(userDataSelectors);
 
 const submitProfileForm = (data) => {
