@@ -14,10 +14,11 @@ const addButton = document.querySelector('.add-button')
 const nameInput = popupProfile.querySelector('.form__item_content_name');
 const descriptionInput = popupProfile.querySelector('.form__item_content_description');
 
+const popupWithImage = new PopupWithImage('.popup_type_picture');
+popupWithImage.setEventListeners();
+
 const handleCardClick = (data) => {
-    const popupWithImage = new PopupWithImage('.popup_type_picture');
     popupWithImage.open(data);
-    popupWithImage.setEventListeners();
 }
 
 const renderer = (item) => {
