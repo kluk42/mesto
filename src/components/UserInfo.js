@@ -2,6 +2,8 @@ export default class UserInfo {
     constructor({nameSelector, infoSelector}) {
         this._userNameSelector = nameSelector;
         this._userInfoSelector = infoSelector;
+        this._name = document.querySelector(this._userNameSelector);
+        this._job = document.querySelector(this._userInfoSelector);
     }
 
     getUserInfo = () => {
@@ -14,9 +16,7 @@ export default class UserInfo {
         const propertyNameForName = 'name-input';
         const propertyNameForJob = 'description-input';
 
-        const name = document.querySelector(this._userNameSelector);
-        const job = document.querySelector(this._userInfoSelector);
-        name.textContent = data[propertyNameForName];
-        job.textContent = data[propertyNameForJob];
+        this._name.textContent = data[propertyNameForName];
+        this._job.textContent = data[propertyNameForJob];
     }
 }

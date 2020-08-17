@@ -16,26 +16,9 @@ export default class PopupWithForm extends Popup {
         return this._formValues;
     }
 
-    _errorCleaner = () => {
-        const errorList = this._form.querySelectorAll('.form__input-error');
-        const inputList = this._form.querySelectorAll('.form__item');
-        errorList.forEach(errorItem => {
-            errorItem.textContent = '';
-        })
-        inputList.forEach(inputitem => {
-            inputitem.classList.remove('form__item_type_error');
-        })
-    }
-
-    _removeEventListeners = () => {
-        this._form.removeEventListener('submit', this._submitCallBack);
-    }
-
     close = () => {
         super.close();
-        this._removeEventListeners();
         this._form.reset();
-        this._errorCleaner();
     }
 
     _submitCallBack = (evt) => {

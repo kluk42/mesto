@@ -5,16 +5,19 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import '../page/index.css';
+import '../pages/index.css';
 
 const popupProfile = document.querySelector('.popup_type_profile');
+const popupEditor = document.querySelector('.popup_type_editor');
 const editProfileButton = document.querySelector('.edit-button');
 const addButton = document.querySelector('.add-button')
-const formArray = Array.from(document.querySelectorAll('.form'));
+const nameInput = popupProfile.querySelector('.form__item_content_name');
+const descriptionInput = popupProfile.querySelector('.form__item_content_description');
 
 const handleCardClick = (data) => {
     const popupWithImage = new PopupWithImage('.popup_type_picture');
-    popupWithImage.open(data);    
+    popupWithImage.open(data);
+    popupWithImage.setEventListeners();
 }
 
 const renderer = (item) => {
@@ -41,22 +44,16 @@ const submitCardForm = (data) => {
 }
 
 const profileForm = new PopupWithForm('.popup_type_profile', submitProfileForm);
+profileForm.setEventListeners();
 
 const editorForm = new PopupWithForm('.popup_type_editor', submitCardForm);
 editorForm.setEventListeners();
 
-let profilePopupValidation = '';
-let editorPopupValidation = '';
+const profilePopupValidation = new FormValidator(validationConfig, popupProfile);
+profilePopupValidation.enableValidation();
 
-formArray.forEach((form) => {
-    const validation = new FormValidator(validationConfig, form);
-    validation.enableValidation();
-    if (form.parentElement.classList.contains('popup_type_profile')) {
-        profilePopupValidation = validation;
-    } else {
-        editorPopupValidation = validation;
-    }
-})
+const editorPopupValidation = new FormValidator(validationConfig, popupEditor);
+editorPopupValidation.enableValidation();
 
 function validateSubmitProfileButton () {
     profilePopupValidation.toggleButtonState();
@@ -69,13 +66,15 @@ function validateSubmitCardButton () {
 function editProfileButtonCallback () {
     profileForm.open();
     const profileData = userInfo.getUserInfo();
-    popupProfile.querySelector('.form__item_content_name').value = profileData.name;
-    popupProfile.querySelector('.form__item_content_description').value = profileData.description;
+    nameInput.value = profileData.name;
+    descriptionInput.value = profileData.description;
+    profilePopupValidation.errorCleaner();
     validateSubmitProfileButton();
 }
 
 function addButtonCallback () {
     editorForm.open();
+    editorPopupValidation.errorCleaner();
     validateSubmitCardButton();
 }
 

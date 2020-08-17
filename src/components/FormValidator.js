@@ -68,4 +68,15 @@ export class FormValidator {
           return !inputElement.validity.valid;
         })
       }
+
+      errorCleaner = () => {
+        const errorList = this._formElement.querySelectorAll('.form__input-error');
+        const inputList = this._formElement.querySelectorAll('.form__item');
+        errorList.forEach(errorItem => {
+            errorItem.textContent = '';
+        })
+        inputList.forEach(inputitem => {
+            inputitem.classList.remove('form__item_type_error');
+        })
+    }
 }
