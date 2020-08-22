@@ -1,7 +1,7 @@
 .like-button {
     cursor: pointer;
     background-image: url(../../images/Like.svg);
-
+    
     background-repeat: no-repeat;
     background-color: white;
     padding: 0;

@@ -13,6 +13,7 @@
     line-height: calc(22/18);
     text-align: center;
     transition: background-color .5s cubic-bezier(.27,.64,.81,.75);
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 845px) {

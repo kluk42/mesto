@@ -1,25 +1,13 @@
+@import url(./__field/form__field.css);
 @import url(./__input-container/form__input-container.css);
-@import url(./__item/form__item.css);
-@import url(./__header/form__header.css);
-@import url(./__container/form-container.css);
-@import url(./__close-button/form__close-button.css);
-@import url(./__submit-button/form__submit-button.css);
 @import url(./__input-error/form__input-error.css);
 @import url(./__input-error/_active/form__input-error_active.css);
-@import url(./__field/form__field.css);
+@import url(./__item/form__item.css);
+@import url(./__submit-button/form__submit-button.css);
+
 
 .form {
-    width: calc(430/1280*100vw);
-    max-width: 430px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 10px;
-    position: relative;
-}
-
-@media screen and (max-width: 845px) {
-    .form{
-        width: 75%;
-    }
+    width: calc(358/430*100%);
+    margin: 0 auto;
+    margin-bottom: 36.51px;
 }/**/

@@ -1,4 +1,4 @@
-.form__header {
+.popup__header {
     position: relative;
     width: calc(330/1280*100vw);
     max-width: 330px;

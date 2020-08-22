@@ -4,6 +4,12 @@
     border-radius: 100%;
     margin-right: calc(30/882*100%);
     justify-self: flex-start;
+    transition: opacity .5s cubic-bezier(.27,.64,.81,.75);
+    position: relative;
+}
+
+.profile__avatar:hover {
+    opacity: .8;
 }
 
 @media (max-width: 845px) {

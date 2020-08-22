@@ -1,0 +1,6 @@
+.profile-avatar__brush {
+    position: absolute;
+    left: 47px;
+    top: 47px;
+    visibility: hidden;
+}
