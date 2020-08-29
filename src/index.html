@@ -13,7 +13,7 @@
     <main class="content">
         <section class="profile section">
             <div class="profile-avatar">
-                <img src="./images/Kusto.jpg" alt="Жак-Ив Кусто" class="profile-avatar__image">
+                <img alt="Жак-Ив Кусто" class="profile-avatar__image">
                 <img src="./images/brush.svg" alt="Кисточка" class="profile-avatar__brush">
             </div>
             <div class="profile__info">
@@ -75,7 +75,7 @@
             <p class="popup__sign">Архыз</p>
          </div>
      </div>
-     <div class="popup popup_type_avatar popup-opener">
+     <div class="popup popup_type_avatar">
         <div class="popup__window">
              <h2 class="popup__header">Обновить аватар</h2>
              <button class="close-button popup__close-button" type="button"></button>
@@ -90,13 +90,12 @@
              </form>
          </div>
      </div>
-
-     <div class="popup popup_type_reassurance">
-         <div class="popup__window">
+     <div class="popup popup_type_confirmation">
+         <form class="popup__window">
             <button class="close-button popup__close-button" type="button"></button>
             <h2 class="popup__header">Вы уверены?</h2>
-            <button class="submit-button submit-button_confirmation" type="button">Да</button>
-         </div>
+            <button class="submit-button submit-button_confirmation" type="submit">Да</button>
+         </form>
      </div>
 
      <template id="card-template">
@@ -110,7 +109,7 @@
                 <p class="card__name">Карачаево-Черкессия</p>
                 <div class="like-section">
                     <button class="like-button"></button>
-                    <p class="like-section__likes-counter">1</p>
+                    <p class="like-section__likes-counter"></p>
                 </div>
             </div>
         </div>

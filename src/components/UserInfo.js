@@ -1,9 +1,11 @@
 export default class UserInfo {
-    constructor({nameSelector, infoSelector}) {
+    constructor({nameSelector, infoSelector, avatarSelector}, userId) {
         this._userNameSelector = nameSelector;
         this._userInfoSelector = infoSelector;
+        this._avatarSelector = avatarSelector;
         this._name = document.querySelector(this._userNameSelector);
         this._job = document.querySelector(this._userInfoSelector);
+        this._avatar = document.querySelector(this._avatarSelector);
     }
 
     getUserInfo = () => {
@@ -13,10 +15,9 @@ export default class UserInfo {
     }
 
     setUserInfo = (data) => {
-        const propertyNameForName = 'name-input';
-        const propertyNameForJob = 'description-input';
-
-        this._name.textContent = data[propertyNameForName];
-        this._job.textContent = data[propertyNameForJob];
+        this._name.textContent = data.name;
+        this._job.textContent = data.about;
+        this._avatar.src = data.avatar;
+        this.userId = data._id;
     }
 }

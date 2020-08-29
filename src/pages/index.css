@@ -20,7 +20,7 @@
 @import url(../blocks/submit-button/_confirmation/submit-button_confirmation.css);
 @import url(../blocks/edit-popup/edit-popup.css);
 @import url(../blocks/delete-button/delete-button.css);
+@import url(../blocks/delete-button/_state/_hidden/delete-button_state_hidden.css);
 @import url(../blocks/popup-opener/popup-opener.css);
 @import url(../blocks/like-section/like-section.css);
 @import url(../blocks/profile-avatar/profile-avatar.css);
-@import url(../blocks/profile-avatar/__brush/_state/_visible/profile-avatar_state_visible.css);

@@ -1,4 +1,4 @@
-const userDataSelectors = {nameSelector: '.profile__name', infoSelector: '.profile__description'};
+const userDataSelectors = {nameSelector: '.profile__name', infoSelector: '.profile__description', avatarSelector: '.profile-avatar__image'};
 
 const initialCards = [
     {
@@ -36,4 +36,10 @@ const validationConfig = {
     errorClass: 'form__input-error_active'
   };
 
-export {initialCards, validationConfig, userDataSelectors}
+const popupConfirmationSelector = '.popup_type_confirmation';
+
+const baseURL = 'https://mesto.nomoreparties.co/v1/cohort-14/';
+
+const token = '614c831a-d135-4d7c-82ff-12ed74000dec';
+
+export {initialCards, validationConfig, userDataSelectors, popupConfirmationSelector, baseURL, token}
