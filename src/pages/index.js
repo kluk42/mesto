@@ -83,7 +83,7 @@ const renderItems = (data) => {
     
 }
 
-const cardList = new Section({renderItems}, '.gallery');
+const cardList = new Section({renderItems});
 
 Promise.all([
     api.getInitialCards(),
