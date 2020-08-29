@@ -78,7 +78,7 @@ const renderItems = (data) => {
         })
     } else {
         const renderedCard = renderer(data);
-        document.querySelector('.gallery').append(renderedCard);
+        document.querySelector('.gallery').prepend(renderedCard);
     }
     
 }
