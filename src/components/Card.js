@@ -41,6 +41,7 @@ export class Card {
         this._numberOfLikes = Object.keys(this._likes).length;
         
         cardImg.src = this._pictureLink;
+        cardImg.alt = this._name;
         cardName.textContent = this._name;
  
         this._cardLikeNumber.textContent = this._numberOfLikes;
