@@ -50,32 +50,49 @@ function handleDeleteClick (cardId, card) {
     confirmationPopup.setSubmitHandler(action);
 }
 
+const renderer = (item) => {
+    const ownerId = item.owner._id;
+    const cardId = item._id;
+    const userIdToCard = userInfo.userId;
+    const card = new Card(item, '#card-template', handleCardClick, handleDeleteClick, cardId, ownerId, userIdToCard, {handleLikeClick: () => {
+        if (!card.isLiked()) {
+            api.likeCard(card.cardId).then(res => {
+                card.updateLikes(res.likes);
+            })
+        } else {
+            api.dislikeCard(card.cardId).then(res => {
+                card.updateLikes(res.likes);
+        })
+        }
+    }
+})
+        const cardElement = card.generateCard();
+        return cardElement
+}
+
+const renderItems = (data) => {
+    if (data.constructor === Array) {
+        data.forEach(card => {
+            const renderedCard = renderer(card);
+            document.querySelector('.gallery').append(renderedCard);
+        })
+    } else {
+        const renderedCard = renderer(data);
+        document.querySelector('.gallery').append(renderedCard);
+    }
+    
+}
+
+const cardList = new Section({renderItems}, '.gallery');
+
 Promise.all([
     api.getInitialCards(),
     api.getUserInfo()
 ]).then(res => {
     const [initialCards, userData] = res;
     userInfo.setUserInfo(userData);
-        const userId = userData._id;
-        const renderer = (item) => {
-            const ownerId = item.owner._id;
-            const cardId = item._id;
-            const card = new Card(item, '#card-template', handleCardClick, handleDeleteClick, cardId, ownerId, userId, {handleLikeClick: () => {
-                if (!card.isLiked()) {
-                    api.likeCard(card.cardId).then(res => {
-                        card.updateLikes(res.likes);
-                    })
-                } else {
-                    api.dislikeCard(card.cardId).then(res => {
-                        card.updateLikes(res.likes);
-                })
-                }
-            }});
-            const cardElement = card.generateCard();
-            defaultCards.addItem(cardElement);
-        }
-        const defaultCards = new Section({items: initialCards, renderer: renderer}, '.gallery')
-        defaultCards.renderItems();
+    const userId = userData._id;
+    cardList.renderItems(initialCards);
 })
 
 const handleCardClick = (data) => {
@@ -97,28 +114,9 @@ const submitCardForm = (data) => {
     const propertyNameForImgLink = 'link-input';
     const item = {name: data[propertyNameForPlace], link: data[propertyNameForImgLink]};
     api.uploadCard(item).then(res => {
-        const renderer = (item) => {
-            const ownerId = item.owner._id;
-            const cardId = item._id;
-            const userId = item.owner._id;
-            const card = new Card(item, '#card-template', handleCardClick, handleDeleteClick, cardId, ownerId, userId, {handleLikeClick: () => {
-                if (!card.isLiked()) {
-                    api.likeCard(card.cardId).then(res => {
-                        card.updateLikes(res.likes);
-                    })
-                } else {
-                    api.dislikeCard(card.cardId).then(res => {
-                        card.updateLikes(res.likes);
-                })
-                }
-            }});
-            const cardElement = card.generateCard();
-            newCard.addItem(cardElement);
-        }
-            const newCard = new Section({items: res, renderer: renderer}, '.gallery');
-            newCard.renderItems();
-            renderLoading(false);
-            editorForm.close();
+        cardList.renderItems(res);
+        renderLoading(false);
+        editorForm.close();
     })
 }
 
