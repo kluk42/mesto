@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "mesto",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "^3.6.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf ./dist && webpack",

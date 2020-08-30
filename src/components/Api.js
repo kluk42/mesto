@@ -12,9 +12,16 @@ export default class Api {
                 'content-type': 'application/json'
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {return Promise.reject(`Ошибка: ${res.status}`)}
+        })
         .then(cards => {
             return cards
+        })
+        .catch((err) => {
+            console.log(err)
         })
     }
 
@@ -25,9 +32,14 @@ export default class Api {
                 'content-type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(data => {
-            return data
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err)
         })
     }
 
@@ -46,7 +58,15 @@ export default class Api {
             about: data[this._descriptionInput]
   })
 })
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     getCardId(card) {
@@ -61,6 +81,15 @@ export default class Api {
                 'content-type': 'application/json'
             },
         })
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     likeCard (id) {
@@ -71,7 +100,15 @@ export default class Api {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     dislikeCard (id) {
@@ -82,7 +119,15 @@ export default class Api {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     uploadCard (card) {
@@ -98,7 +143,15 @@ export default class Api {
                 link: card.link
             })
         })
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     uploadAvatar (avatarLink) {
@@ -113,6 +166,14 @@ export default class Api {
                 avatar: avatarLink
             })
         })
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 }

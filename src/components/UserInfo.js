@@ -9,8 +9,8 @@ export default class UserInfo {
     }
 
     getUserInfo = () => {
-        const userInfoFrompage = {name: document.querySelector('.profile__name').textContent, 
-            description: document.querySelector('.profile__description').textContent}
+        const userInfoFrompage = {name: this._name.textContent, 
+            description: this._job.textContent}
             return userInfoFrompage;
     }
 

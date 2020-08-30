@@ -74,16 +74,16 @@ const renderItems = (data) => {
     if (data.constructor === Array) {
         data.forEach(card => {
             const renderedCard = renderer(card);
-            document.querySelector('.gallery').append(renderedCard);
+            cardList.addItem(renderedCard);
         })
     } else {
         const renderedCard = renderer(data);
-        document.querySelector('.gallery').prepend(renderedCard);
+        cardList.addItem(renderedCard);
     }
     
 }
 
-const cardList = new Section({renderItems});
+const cardList = new Section({renderItems}, '.gallery');
 
 Promise.all([
     api.getInitialCards(),
@@ -102,8 +102,8 @@ const handleCardClick = (data) => {
 const submitProfileForm = (data) => {
     api.sendUserInfo(data).then(res => {
         api.getUserInfo().then(userData => {
-            renderLoading(false);
             userInfo.setUserInfo(userData);
+            renderLoading(false);
             profileForm.close();
         })
     })
