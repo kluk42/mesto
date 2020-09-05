@@ -90,6 +90,7 @@ Promise.all([
     api.getUserInfo()
 ]).then(res => {
     const [initialCards, userData] = res;
+    console.log(initialCards)
     userInfo.setUserInfo(userData);
     const userId = userData._id;
     cardList.renderItems(initialCards);
