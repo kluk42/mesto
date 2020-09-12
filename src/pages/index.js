@@ -71,6 +71,7 @@ const renderer = (item) => {
 }
 
 const renderItems = (data) => {
+    console.log(data.constructor)
     if (data.constructor === Array) {
         data.forEach(card => {
             const renderedCard = renderer(card);
