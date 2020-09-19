@@ -4,7 +4,8 @@
   "description": "mesto",
   "main": "index.js",
   "dependencies": {
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "node-forge": "^0.10.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
